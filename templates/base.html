@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <title>Blog</title>
@@ -43,16 +42,16 @@
             margin: 20px auto;
         }
 
-        .art + .art {
+        .blog + .blog {
             margin-top: 20px;
         }
 
-        .art-title {
+        .blog-title {
             font-weight: bold;
             font-size: 20px;
         }
 
-        .art-body {
+        .blog-body {
             margin: 0;
             font-size: 17px;
         }
@@ -61,31 +60,19 @@
     <body>
         <h1>Blog</h1>
 
-        <form method="post">
-            <label>
-                <div>title</div>
-                <input type="text" name="title" value="{{title}}">
-            </label>
-
-            <label>
-                <div>art</div>
-                <textarea name="blog">{{blog}}</textarea>
-            </label>
-
-            <div class="error">{{error}}</div>
-
-            <input type="submit">
-        </form>
 
         <hr>
 
-        {% for art in arts %}
+        {% for blog in blogs %}
             <div class="blog">
-                <div class="blog-title">{{blog.title}}</div>
-                <pre class="blog-body">{{blog.art}}</pre>
+                <h2><a href="/blog/{{ blog.key().id()}}">{{ blog.title }}</a></h2>
+                <p>{{ blog.blog }}</p>
+
             </div>
         {% endfor %}
 
+        {% block content %}
+        {% endblock %}
 
     </body>
 </html>
